@@ -9,6 +9,8 @@ def image_upload_handler(instance, file_name):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
     image = models.ImageField(upload_to=image_upload_handler, blank=True)
+    is_premium = models.BooleanField(default=False)
+    bio = models.CharField(max_length=256, blank=True, null=True)
 
 
 class Group(models.Model):
